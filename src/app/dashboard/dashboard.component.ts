@@ -27,14 +27,12 @@ export class DashboardComponent implements OnInit, OnDestroy {
     private appwriteService: AppwriteService
   ) {}
 
-  ngOnInit() {
-    this.appwriteService.getCurrentUser().then((user: { name: any; }) => {
+  async ngOnInit() {
+   await this.appwriteService.getCurrentUser().then((user: { name: any }) => {
       this.user.name = user.name;
       this.isLoggedIn = true;
-    }, (error) => {
-      alert('Please login to access this page');
-      this.router.navigate(['/']);
-    });
+    })
+    
   }
 
   toggleSidebar(event:Event) {

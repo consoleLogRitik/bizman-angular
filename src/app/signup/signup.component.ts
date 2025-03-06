@@ -46,7 +46,6 @@ export class SignupComponent {
 
       this.appwriteService.signup(email, password, name).then(
         () => {
-          console.log('here1');
           this.isLoading = false;
           this.router.navigate(['/dashboard']);
         },
