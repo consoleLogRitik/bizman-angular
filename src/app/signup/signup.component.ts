@@ -10,7 +10,6 @@ import { AppwriteService } from '../services/appwrite.service';
   standalone: true,
   imports: [CommonModule, RouterModule, ReactiveFormsModule],
   templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css']
 })
 export class SignupComponent {
   // Custom validator for password matching

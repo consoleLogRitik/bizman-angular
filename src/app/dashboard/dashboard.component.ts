@@ -13,7 +13,7 @@ import { ScannerComponent } from '../components/scanner/scanner.component';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent implements OnInit, OnDestroy {
+export class DashboardComponent {
   @ViewChild('sidebar') sidebarRef!: ElementRef;
   user = { name: "who's there?" };
   isLoggedIn = false;
@@ -27,10 +27,13 @@ export class DashboardComponent implements OnInit, OnDestroy {
     private appwriteService: AppwriteService
   ) {}
 
-  async ngOnInit() {
-   await this.appwriteService.getCurrentUser().then((user: { name: any }) => {
+  ngOnInit() {
+    this.appwriteService.getCurrentUser().then((user: { name: any }) => {
       this.user.name = user.name;
+      console.log(user);
       this.isLoggedIn = true;
+    },(error: any) => {
+      console.log(error);
     })
     
   }
@@ -48,6 +51,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   ngAfterViewInit() {
+    console.log(this.isLoggedIn);
+    
     this.unlistenClick = this.renderer.listen('document', 'click', (event) => {
       if (this.isOpen && this.sidebarRef && !this.sidebarRef.nativeElement.contains(event.target)) {
         this.isOpen = false;
