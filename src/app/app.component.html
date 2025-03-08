@@ -1,3 +1,10 @@
 <app-navbar></app-navbar>
-<router-outlet></router-outlet>
+@defer{
+    <router-outlet></router-outlet>
+}
+@placeholder(minimum 1s) {
+    <div class="w-screen h-screen bg-gray-700 text-3xl text-lime-300 animate-pulse flex justify-center items-center">
+        Please wait while we load the content..
+    </div>
+}
 <app-footer></app-footer>
