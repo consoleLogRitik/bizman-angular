@@ -11,9 +11,8 @@ export class AppwriteService {
   constructor() {
     this.client = new Client();
     this.client
-      .setEndpoint('https://cloud.appwrite.io/v1') // Your Appwrite Endpoint
-      .setProject('67c826a10014c0d5eed1'); // Your project ID
-
+      .setEndpoint('https://cloud.appwrite.io/v1') 
+      .setProject('67c826a10014c0d5eed1');
     this.account = new Account(this.client);
   }
 
